@@ -26,7 +26,7 @@ public class ledControl extends AppCompatActivity {
     SeekBar brillo;
     TextView lumn;
     String address = null;
-
+    String name;
     private ProgressDialog progress;
 
     BluetoothAdapter myBluetooth = null;
@@ -42,10 +42,12 @@ public class ledControl extends AppCompatActivity {
         //receive the address of the bluetooth device
         Intent newint = getIntent();
         address = newint.getStringExtra(ListaDispositivosBT.EXTRA_ADDRESS);
-
+        /*Get name of bluetooth device*/
+        name = newint.getStringExtra(ListaDispositivosBT.NAME);
         //view of the ledControl layout
         setContentView(R.layout.activity_led_control);
-
+        /*Change tilte of activity*/
+        this.setTitle(name);
         //call the widgtes
         btnOn = (Button)findViewById(R.id.button);
         btnOff = (Button)findViewById(R.id.button2);
@@ -109,7 +111,7 @@ public class ledControl extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {
 
 
-                }
+            }
         });
     }
 

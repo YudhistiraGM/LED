@@ -27,6 +27,7 @@ public class ListaDispositivosBT extends AppCompatActivity {
     private Set<BluetoothDevice> pairedDevices;
     //private OutputStream outputStream = null;
     public static String EXTRA_ADDRESS = "device_address";
+    public static String NAME = "Device_Name";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,11 +97,19 @@ public class ListaDispositivosBT extends AppCompatActivity {
             // Get the device MAC address, the last 17 chars in the View
             String info = ((TextView) v).getText().toString();
             String address = info.substring(info.length() - 17);
+            /*Get the device name*/
+            String name = info.substring(0,info.length() - 17);
+            msg(info);
             // Make an intent to start next activity.
             Intent i = new Intent(ListaDispositivosBT.this, ledControl.class);
             //Change the activity.
             i.putExtra(EXTRA_ADDRESS, address); //this will be received at ledControl (class) Activity
+            i.putExtra(NAME,name); //this will be received at ledControl (class) Activity
             startActivity(i);
         }
     };
+
+    private void msg(String info){
+        Toast.makeText(this, info,Toast.LENGTH_LONG).show();
+    }
 }
