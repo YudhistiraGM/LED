@@ -1,0 +1,4 @@
+<resources>
+    <color name="white">#FFFFFF</color>
+    <string name="app_name">Duino Led-Droid</string>
+</resources>
